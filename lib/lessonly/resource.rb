@@ -1,3 +1,6 @@
+require 'active_support'
+require 'active_support/inflector'
+require 'active_support/core_ext'
 require 'lessonly/response'
 
 module Lessonly
@@ -7,7 +10,11 @@ module Lessonly
     end
 
     def self.find(id)
-      client.get("#{collection_path}/#{id}")
+      find_by_href("#{collection_path}/#{id}")
+    end
+
+    def self.find_by_href(href)
+      client.get(href)
     end
 
     def self.create(params, query = {})
@@ -18,10 +25,12 @@ module Lessonly
       basename
     end
 
+    # rubocop:disable PredicateName
     def self.has_many(relation)
       define_has_many_getter(relation)
       # TODO: define_has_many_setter(relation)
     end
+    # rubocop:enable PredicateName
 
     def self.define_has_many_getter(relation)
       define_method relation do
@@ -35,16 +44,16 @@ module Lessonly
       end
     end
 
+    # rubocop:disable PredicateName
     def self.has_one(relation, options = {})
       define_method relation do
-
         if (memoized = instance_variable_get("@#{relation}"))
           memoized
         else
           klass = options[:klass] || "Lessonly::#{relation.classify}"
 
           id_attr = options[:using] ? options[:using] : "#{relation}_id"
-          relation_id = instance_variable_get("@attrs")[id_attr]
+          relation_id = instance_variable_get('@attrs')[id_attr]
 
           if relation_id
             item = klass.constantize.find(relation_id)
@@ -52,6 +61,11 @@ module Lessonly
           end
         end
       end
+    end
+    # rubocop:enable PredicateName
+
+    def self.basename
+      name.split('::').last.underscore.dasherize.pluralize
     end
 
     def update(params)
@@ -63,12 +77,12 @@ module Lessonly
       client.delete href, self
     end
 
-    def href
-      "#{self.class.collection_path}/#{id}"
+    def reload
+      self.class.find_by_href(href)
     end
 
-    def self.basename
-      name.split('::').last.underscore.dasherize.pluralize
+    def href
+      "#{self.class.collection_path}/#{id}"
     end
 
     def self.client
@@ -76,7 +90,7 @@ module Lessonly
     end
 
     def client
-      @client ||= Lessonly::Client.new
+      self.class.client
     end
   end
 end

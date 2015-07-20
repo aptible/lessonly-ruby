@@ -19,6 +19,5 @@ module Lessonly
   end
 end
 
-
 require 'lessonly/client'
 require 'lessonly/resource'

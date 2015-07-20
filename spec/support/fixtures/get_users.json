@@ -1,0 +1,27 @@
+{
+  "type":"users",
+  "users":[
+    {
+      "id":3,
+      "name":"Learner Smith",
+      "email":"learner@aptible.com",
+      "role":"learner"
+    },
+    {
+      "id":2,
+      "name":"Skylar Anderson",
+      "email":"skylar@aptible.com",
+      "role":"admin"
+    },
+    {
+      "id":1,
+      "name":"Chas Ballew",
+      "email":"chas@aptible.com",
+      "role":"admin"
+    }
+  ],
+  "total_users":3,
+  "total_pages":1,
+  "page":1,
+  "per_page":50
+}

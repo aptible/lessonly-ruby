@@ -1,0 +1,22 @@
+{
+  "type":"course",
+  "id":1,
+  "title":"HIPAA Advanced",
+  "assignees_count":4,
+  "completed_count":0,
+  "description":"Advanced HIPAA training for software developers.",
+  "lessons":[
+    {
+      "id":1,
+      "title":"Basic HIPAA Lesson",
+      "assignees_count":0,
+      "completed_count":0
+    },
+    {
+      "id":2,
+      "title":"Advanced HIPAA Lesson",
+      "assignees_count":0,
+      "completed_count":0
+    }
+  ]
+}

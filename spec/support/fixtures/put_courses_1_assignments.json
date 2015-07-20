@@ -1,0 +1,14 @@
+{
+  "type":"update_course_assignments",
+  "assignments":[
+    {
+      "id": 1,
+      "assignee_id": 1,
+      "due_by": "09/30/2020",
+      "reassigned_at": "09/30/2020",
+      "completed_at": null,
+      "status": "Incomplete",
+      "score": 0
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type":"group",
+  "id":1,
+  "name":"Developers",
+  "members":[
+    {
+      "id":1,
+      "name":"Chas Ballew"
+    },
+    {
+      "id":2,
+      "name":"Skylar Anderson"
+    }
+  ],
+  "managers":[
+
+  ]
+}

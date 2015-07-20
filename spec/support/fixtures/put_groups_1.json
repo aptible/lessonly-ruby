@@ -1,0 +1,22 @@
+{
+  "type":"group",
+  "id":1,
+  "name":"Developers",
+  "members":[
+    {
+      "id":1,
+      "name":"Chas Ballew"
+    },
+    {
+      "id":2,
+      "name":"Skylar Anderson"
+    }
+    {
+      "id":3,
+      "name":"Learner Smith"
+    }
+  ],
+  "managers":[
+
+  ]
+}

@@ -1,12 +1,18 @@
 module Lessonly
   class Group < Resource
-    has_many :assignments
+    def destroy_membership(user)
+      return unless members.any?
+
+      new_members = members.map do |m|
+        m.remove = true if m.id == user.id
+      end
+
+      update(members: new_members)
+    end
 
     def create_membership(user)
-      new_memberships = memberships || []
-      new_memberships.push({ id: user.id })
-
-      update(memberships: new_memberships)
+      self.members = members.push(user)
+      update(members: members)
     end
   end
 end

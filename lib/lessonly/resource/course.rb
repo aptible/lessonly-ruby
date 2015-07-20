@@ -5,22 +5,29 @@ module Lessonly
     def initialize(agent, data = {})
       super(agent, data)
 
-      has_many_lessons if @attrs[:lessons]
+      define_has_many_lessons if @attrs[:lessons]
     end
 
-    def has_many_lessons
-      # Lessons is a string for some weird reason
-      @attrs[:lessons] = JSON.parse(@attrs[:lessons]).map do |lesson|
-        Lessonly::Lesson.new(agent, lesson)
+    def define_has_many_lessons
+      self.lessons = @attrs[:lessons].map do |l|
+        Lessonly::Lesson.new(agent, l.attrs)
       end
     end
 
-    def create_assignment(user, due_by = false)
-      due_by ||= 1.year.from_now
+    def create_assignment(user, due_by = 1.year.from_now)
+      self.assignments = assignments.push(
+        Lessonly::Assignment.new(agent, assignee_id: user.id, due_by: due_by)
+      )
 
-      assignments = [{ assignee_id: user.id, due_by: due_by }]
       client.put "#{href}/assignments",
-                 Resource.new(agent, { assignments: assignments })
+                 Resource.new(agent, assignments: assignments)
+    end
+
+    def destroy_assignment(user)
+      self.assignments = assignments.select { |a| a.assignee_id != user.id }
+
+      client.put "#{href}/assignments",
+                 Resource.new(agent, assignments: assignments)
     end
   end
 end

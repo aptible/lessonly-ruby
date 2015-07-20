@@ -1,0 +1,8 @@
+{
+  "type": "user",
+  "id": 3,
+  "email": "learner@aptible.com",
+  "name": "Learner Smith",
+  "role": "learner",
+  "custom_user_field_data": [ ]
+}
