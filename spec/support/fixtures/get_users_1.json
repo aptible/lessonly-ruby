@@ -1,0 +1,8 @@
+{
+  "type": "user",
+  "id": 1,
+  "email": "chas@aptible.com",
+  "name": "Chas Ballew",
+  "role": "admin",
+  "custom_user_field_data": [ ]
+}

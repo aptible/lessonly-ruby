@@ -28,12 +28,13 @@ module Sawyer
               else
                 res.body
               end
+
       log_response
     end
     # rubocop:enable MethodLength
 
     def log_response
-      puts @env
+      # puts @env
     end
 
     def process_data(data)

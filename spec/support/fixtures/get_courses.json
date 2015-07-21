@@ -1,0 +1,17 @@
+{
+  "type":"courses",
+  "courses":[
+    {
+      "id":1,
+      "title":"HIPAA Basic"
+    },
+    {
+      "id":2,
+      "title":"HIPAA Advanced"
+    },
+    {
+      "id":3,
+      "title":"HIPAA for Security Officers"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type":"groups",
+  "groups":[
+    {
+      "id":1,
+      "name":"Developers"
+    }
+  ]
+}
