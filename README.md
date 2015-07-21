@@ -14,6 +14,10 @@ gem 'lessonly-ruby'
 
 And then run `bundle install`.
 
+## Running tests
+
+Run `rake ci` to run rubocop and rspec tests.
+
 ## Usage
 
 First, configure your client:
