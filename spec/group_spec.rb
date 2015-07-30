@@ -1,21 +1,21 @@
 require 'spec_helper'
 
 describe Lessonly::Group do
-  context '#all' do
+  describe '#all' do
     it 'should return all groups' do
       groups = Lessonly::Group.all
       expect(groups.count).to eq 1
     end
   end
 
-  context '#find' do
+  describe '#find' do
     it 'should find a single group' do
       group = Lessonly::Group.find(1)
       expect(group.name).to eq 'Developers'
     end
   end
 
-  context '#create_membership' do
+  describe '#create_membership' do
     it 'should add a user to the group\'s members' do
       group = Lessonly::Group.find(1)
       user = Lessonly::User.find(3)
@@ -27,7 +27,7 @@ describe Lessonly::Group do
     end
   end
 
-  context '#destroy_membership' do
+  describe '#destroy_membership' do
     it 'should remove a user from the group\'s members' do
       group = Lessonly::Group.find(1)
       user = Lessonly::User.find(1)

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Lessonly::Course do
-  context '#all' do
+  describe '#all' do
     it 'should return all courses' do
       courses = Lessonly::Course.all
       expect(courses.count).to eq 3
@@ -10,14 +10,14 @@ describe Lessonly::Course do
     end
   end
 
-  context '#find' do
+  describe '#find' do
     it 'should find a single course' do
       course = Lessonly::Course.find(1)
       expect(course.title).to eq 'HIPAA Advanced'
     end
   end
 
-  context '#lessons' do
+  describe '#lessons' do
     it 'should have many lessons' do
       course = Lessonly::Course.find(1)
 
@@ -26,7 +26,7 @@ describe Lessonly::Course do
     end
   end
 
-  context '#assignments' do
+  describe '#assignments' do
     it 'should have many assignments' do
       course = Lessonly::Course.find(1)
       assignments = course.assignments
@@ -43,7 +43,7 @@ describe Lessonly::Course do
     end
   end
 
-  context '#create_assignment' do
+  describe '#create_assignment' do
     it 'should create a user assignment' do
       course = Lessonly::Course.find(1)
       user = Lessonly::User.find(3)
@@ -55,7 +55,7 @@ describe Lessonly::Course do
     end
   end
 
-  context '#destroy_assignment' do
+  describe '#destroy_assignment' do
     it 'should remove a user assignment' do
       course = Lessonly::Course.find(1)
       user = Lessonly::User.find(1)
