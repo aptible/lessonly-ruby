@@ -53,6 +53,18 @@ describe Lessonly::Course do
       expect(course.assignments.map(&:assignee_id)).to include(user.id)
       expect(course.assignments.count).to eq 2
     end
+
+    it 'should accept multiple users' do
+      course = Lessonly::Course.find(1)
+      user3 = Lessonly::User.find(3)
+      user2 = Lessonly::User.find(2)
+
+      course.create_assignment([user3, user2])
+
+      expect(course.assignments.map(&:assignee_id)).to include(user3.id)
+      expect(course.assignments.map(&:assignee_id)).to include(user2.id)
+      expect(course.assignments.count).to eq 3
+    end
   end
 
   describe '#destroy_assignment' do

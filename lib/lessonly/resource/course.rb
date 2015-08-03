@@ -14,13 +14,17 @@ module Lessonly
       end
     end
 
-    def create_assignment(user, due_by = 1.year.from_now)
-      self.assignments = assignments.push(
+    def create_assignment(users, due_by = 1.year.from_now)
+      users = [users] unless users.is_a? Array
+
+      new_assignments = users.map do |user|
         Lessonly::Assignment.new(agent, assignee_id: user.id, due_by: due_by)
-      )
+      end
+
+      self.assignments = assignments + new_assignments
 
       client.put "#{href}/assignments",
-                 Resource.new(agent, assignments: assignments)
+                 Resource.new(agent, assignments: new_assignments)
     end
 
     def destroy_assignment(user)
