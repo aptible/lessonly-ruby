@@ -1,6 +1,5 @@
 require 'logger'
 require 'lessonly/exceptions'
-require 'pry'
 
 module Sawyer
   class Response
