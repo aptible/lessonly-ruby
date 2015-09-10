@@ -30,4 +30,16 @@ describe Lessonly::User do
       expect(user.assigned_to?(course)).to eq false
     end
   end
+
+  describe '#serialize' do
+    let(:agent) { Sawyer::Agent.new('') }
+    subject do
+      Lessonly::User.new(agent, name: 'Test++ +User!!@', role: 'learner',
+                                email: 'user@example.com')
+    end
+
+    it 'should remove invalid characters' do
+      expect(subject.serialize.name).to eq 'Test User'
+    end
+  end
 end
